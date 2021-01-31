@@ -6,3 +6,12 @@ body{
 h1 {
     color: red;
 }
+.boxes{
+    width: 200px;
+    height: 200px;
+    background-color: aqua;
+    box-shadow: 5px 10px 28px 12px rgb(0, 0, 0,.5);
+    border: 2px solid purple;
+    margin-block-start: 50px;
+    margin-inline-start: 200px;
+}
