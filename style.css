@@ -15,3 +15,9 @@ h1 {
     margin-block-start: 50px;
     margin-inline-start: 200px;
 }
+.better{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: indigo;
+    
+}
