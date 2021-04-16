@@ -1,9 +1,65 @@
-# TestGitHub
+# GIT comenzi + explicatii 
 
-Comenzi Git:
+>Cheia succesului in GIT -> tragi ramura principala in repository-ul local || seara commit --> dimineata fetch -> pull ||
+
+## <ins>basics</ins>
+```bash
+git init -> initializeaza un nou repository local
+git add <nume_fisier> <nume_fisier> -> adaug fisierele specificate pentru a fi monitorizate de git
+git add .     -> adaug toate fisierele
+git commit -m 'titlu' -m 'descriere' -> salvez stadiul proiectului/fisierelor din etapa de stage
+git commit -am 'titlu' -m 'descriere' -> ca mai sus dar sar peste etapa de add
+            ^--fisierele neurmarite nu le adauga(doar pe cele din etapa de add)
+
+git show        -> afiseaza ultimul commit de pe ramura pe care te aflii
+git log         -> afiseaza commit-urile de pe ramura actuala
+git log --all   -> afiseaza toate commit-urile, cu toate ramurile
+git log --all --graph --decorate --oneline -> afiseaza grafic - cu sau fara optiuni -test
+
+git merge <nume_ramura> -> trebuie sa ma aflu pe ramura in care vreau sa aduc schimbarile
+git merge --abort -> anuleaza unirea ramurilor - in cazul conflictelor
+
+git diff <commit_hash/node> <filename> -> pt a vedea modificarile fisierului
+
+git checkout <numele_ramurei/hash> -> schimba ramura/punctul in care te aflii in cronologia repository-ului
+
+    -f -> pt a forta ceva ex: git checkout -f show~1 ->nu ma lasa pt ca nu salvasem un fisier in repository
+    ~1 ... ~x -> reprezinta cu cate commit-uri vrei sa mergi inapoi: git checkout main~2
+
+git branch <nume_ramura_noua> -> creeaza o noua ramura
+git checkout -b <nume_ramura> -> creeaza si trece pe acea noua ramura
+git branch -> pt a vedea ramurile repository-ului local 
+git branch -r -> pt a vedea ramurile repository-ului de pe server
+git branch -m <new_name> -> modifica numele ramurii actuale
+git branch --all -> pt a vedea toate ramurile existente local/remote
+
+$ git branch -d <nume_ramura> -> sterge ramura locala (daca nu te aflii pe ea, altfel nu functioneaza), doar daca a fost unita cu cea principala
+$ git branch -D <nume_ramura> -> sterge ramura locala fortat, indiferent daca a fost sau nu unita cu cea din care a deviat
+$ git push -d <nume_remote> <branch_name> -> sterge ramura de pe server
+
+git remote -v -> afiseaza remote-urile setate
+git remote add <nume_remote> <link_adresa_github> -> denumeste si adauga serverul/repository remote 
+git remote rename <old_name> <new_name> -> redenumeste remote-ul specificat
+git remote -v remove <nume_remote> -> sterge serverul adaugat
+            -v -> verbose ...practic iti afiseaza detalii
+
+git push <nume_remote> <nume_ramura> -> pt a impinge pe server din rep.local pe o anume ramura 
+
+                
+git pull <nume_remote> -> trage intregul proiect(toate ramurile) de pe serverul remote
+            ^--> cu sau fara(cred ca depinde spefcificarea numelui de setarile upstream )
+git pull <nume_remote> <nume_ramura> -> trage de pe server in repo.local ramura specificata
+        ^--> adauga -u pentru a seta modul implicit (nu mai scrii de fiecare data)
+    
+git reset <nod_commit/hash> -> muta HEAD-ul la acel nod/hash, sterge doar istoricul celor mai noi comitt-uri de pana la acel nod, dar fara a pierde modificarileefectuate proiectului
+git reset --hard <nod_commit/hash> --> muta HEAD-ul la acel nod/has, sterge atat commit-urile, cat si datele
+ `difera atunci cand HEAD-ul nu este la ultimul commit de pe acea ramura(practic are rol de checkout -cu sau fara modificarea datelor proiectului)`
+```
+## <ins>from somewhere else</ins>
+```bash
 git config --global user.name "name"
 git config --global user.email "email"
-(--local option as well)
+     (--local option as well)
 git init - initialize a new repo in a directory
 git status - see the state of files in working tree, staging area vs latest commit in git history
 git add - move file(s) to the staging area
@@ -49,3 +105,5 @@ stage and commit = git commit -a -m "description"
 List local branches = git branch
 List remote branches = git branch -r
 List both local and remote branches = git branch -a
+
+```
